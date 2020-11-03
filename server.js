@@ -38,9 +38,9 @@ app.get('/api/hello', function (req, res) {
 });
 
 app.get('/api/timestamp/', (req, res) => {
-    unixTimesatamp = Date.now() / 1000;
-    let dateObject = new Date(unixTimesatamp * 1000);
-    res.json({ unix: unixTimesatamp, utc: dateObject.toUTCString() });
+    unixTimestamp = Date.now() / 1000;
+    let dateObject = new Date(unixTimestamp * 1000);
+    res.json({ unix: unixTimestamp, utc: dateObject.toUTCString() });
 });
 
 app.get('/api/timestamp/:date_str', (req, res) => {
