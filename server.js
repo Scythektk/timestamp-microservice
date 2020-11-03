@@ -15,7 +15,7 @@ app.use(express.static('public'));
 // ! DATE
 function dateToUnix(date_string) {
     let unix = new Date(date_string).getTime() / 1000;
-    return unix;
+    return unix * 1000;
 }
 
 function dateToUTC(date_string) {
@@ -38,9 +38,9 @@ app.get('/api/hello', function (req, res) {
 });
 
 app.get('/api/timestamp/', (req, res) => {
-    unixTimestamp = Date.now() / 1000;
+    let unixTimestamp = Date.now() / 1000;
     let dateObject = new Date(unixTimestamp * 1000);
-    res.json({ unix: unixTimestamp, utc: dateObject.toUTCString() });
+    res.json({ unix: unixTimestamp * 1000, utc: dateObject.toUTCString() });
 });
 
 app.get('/api/timestamp/:date_str', (req, res) => {
@@ -49,7 +49,7 @@ app.get('/api/timestamp/:date_str', (req, res) => {
     if (Number(date_str)) {
         let dateObject_ = new Date(Number(date_str) * 1000);
         res.json({
-            unix: Number(date_str) / 1000,
+            unix: Number(date_str),
             utc: dateObject_.toUTCString(),
         });
     } else if (dateToUTC(date_str) === 'Invalid Date') {
