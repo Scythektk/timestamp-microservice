@@ -24,10 +24,6 @@ function dateToUTC(date_string) {
 }
 // !
 
-// *
-function unixToDate(unix) {}
-// *
-
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/views/index.html');
